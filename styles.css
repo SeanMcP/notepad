@@ -1,0 +1,199 @@
+:root {
+  --accent-color: hsl(210, 90%, 50%);
+  --background: hsl(0, 0%, 98%);
+  --faint-background: hsla(0, 0%, 0%, 25%);
+  --text-color: hsl(0, 0%, 20%);
+}
+html,
+body {
+  height: 100%;
+}
+
+body[data-theme="light"] {
+  --faint-background: hsla(0, 0%, 0%, 6%);
+}
+body[data-theme="book"] {
+  --accent-color: hsl(0, 50%, 50%);
+  --background: hsl(40, 50%, 89%);
+  --faint-background: hsla(40, 30%, 26%, 10%);
+  --text-color: hsl(40, 30%, 26%);
+}
+body[data-theme="dark"] {
+  --accent-color: hsl(53, 100%, 50%);
+  --background: hsl(212, 20%, 20%);
+  --text-color: hsl(212, 20%, 98%);
+}
+body[data-theme="night"] {
+  --accent-color: hsl(120, 100%, 50%);
+  --background: hsl(0, 0%, 0%);
+  --faint-background: hsla(0, 0%, 100%, 10%);
+  --text-color: hsl(0, 0%, 65%);
+}
+body[data-theme="synthwave"] {
+  --bg-1: #201b34;
+  --bg-2: #371f5d;
+  --text-hsl: 200, 100%, 70%;
+  --text-color: hsl(var(--text-hsl));
+  --background: linear-gradient(var(--bg-1), var(--bg-2));
+  --accent-hsl: 300, 100%, 70%;
+  --accent-color: hsl(var(--accent-hsl));
+}
+body[data-theme="synthwave"] #container {
+  text-shadow: 0 0 3px hsla(var(--text-hsl), 65%);
+}
+body[data-theme="synthwave"] .toast {
+  background: var(--bg-2);
+  text-shadow: 0 0 3px hsla(var(--accent-hsl), 65%);
+}
+
+body[data-theme="night"],
+body[data-theme="dark"],
+body[data-theme="synthwave"] {
+  caret-color: var(--accent-color);
+}
+body {
+  background: var(--background);
+  color: var(--text-color);
+  display: grid;
+  grid-template-rows: max-content auto;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  margin: 0;
+}
+*:focus:not(:focus-within) {
+  box-shadow: none;
+  outline: none;
+}
+*:focus {
+  box-shadow: 0 0 0 2px var(--accent-color);
+  outline: 4px solid transparent;
+}
+[data-typeface="monospace"] {
+  font-family: "Fira Code", Menlo, Monaco, "Ubuntu Mono", "Segoe UI Mono",
+    "Courier New", Courier, monospace;
+}
+[data-typeface="sans-serif"] {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+[data-typeface="serif"] {
+  font-family: Georgia, Cambria, Cochin, Times, "Times New Roman", serif;
+}
+header {
+  align-items: center;
+  border-bottom: 1px solid var(--text-color);
+  display: grid;
+  font-size: 75%;
+  grid-template-columns: min-content auto max-content;
+  transition: opacity 200ms ease-in-out;
+}
+header:not(:focus-within):not(:hover) {
+  opacity: 0.5;
+}
+.icon {
+  font-size: 1.5rem;
+  padding: 0 1rem;
+  text-decoration: none;
+}
+.icon:focus,
+.icon:hover {
+  transform: scale(1.25) rotate(-10deg);
+  text-shadow: 0 2px 4px var(--faint-background);
+}
+.attribution {
+  padding: 1rem;
+}
+a {
+  color: currentColor;
+  font-weight: bold;
+  text-decoration-color: var(--faint-background);
+}
+a:focus,
+a:hover {
+  color: var(--accent-color);
+  text-decoration-color: currentColor;
+}
+.settings {
+  display: flex;
+}
+.field {
+  border-left: 1px solid var(--text-color);
+  display: grid;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0.5rem 1rem;
+}
+.field > span {
+  display: block;
+  font-weight: bold;
+  padding: 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+label:not(.field) {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.25rem;
+}
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+}
+input {
+  margin: 0;
+}
+input[type="checkbox"] + span {
+  margin-left: 0.5rem;
+}
+input,
+select {
+  background-color: var(--faint-background);
+  border: none;
+  border-bottom: 1px solid var(--text-color);
+  border-radius: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 2px 4px;
+}
+option {
+  color: initial;
+}
+select::after {
+  content: "v";
+  position: absolute;
+  right: 0;
+}
+main {
+  --spacing: 1rem;
+  overflow: auto;
+  padding: 0 var(--spacing) var(--spacing);
+}
+main:focus-within {
+  box-shadow: inset 0 0 0.5rem var(--accent-color);
+}
+#container {
+  height: calc(100% - var(--spacing));
+  line-height: 140%;
+  margin-top: var(--spacing);
+}
+#container:focus {
+  box-shadow: none;
+}
+#container[data-readable-width="true"] > * {
+  max-width: 70ch;
+}
+#container > * {
+  margin-top: var(--spacing);
+}
+
+.toast {
+  background: var(--background);
+  bottom: 1rem;
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  padding: 1rem;
+  position: fixed;
+  right: 1rem;
+}

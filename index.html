@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notepad</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header>
+      <a class="icon" href="/">
+        <span aria-lable="Notepad" role="img">📝</span>
+      </a>
+      <div class="settings">
+        <label class="field">
+          <span>Typeface</span>
+          <select name="typeface">
+            <option value="monospace">Mono</option>
+            <option value="sans-serif">Sans</option>
+            <option value="serif">Serif</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Size</span>
+          <div>
+            <input type="number" min="8" max="48" name="size" value="20" />
+            <span>px</span>
+          </div>
+        </label>
+        <div class="field">
+          <span>Width</span>
+          <label>
+            <input type="checkbox" name="readable" value="readable" />
+            <span>Readable</span>
+          </label>
+        </div>
+        <label class="field">
+          <span>Theme</span>
+          <select name="theme">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="night">Night</option>
+            <option value="book">Book</option>
+            <option value="synthwave">Synthwave</option>
+          </select>
+        </label>
+      </div>
+      <div class="attribution">
+        Made by <a href="https://seanmcp.com" target="_blank">SeanMcP</a>
+      </div>
+    </header>
+    <main>
+      <div contenteditable id="container"></div>
+    </main>
+  </body>
+  <script src="./main.js"></script>
+</html>
